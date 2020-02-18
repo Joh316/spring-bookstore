@@ -1,16 +1,13 @@
 package com.wildcodeschool.spring.bookstore.entity.carpool;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.wildcodeschool.spring.bookstore.entity.Customer;
 
@@ -20,19 +17,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Car {
-
+public class Transportation {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	private String model;
-
-	@OneToMany(mappedBy = "car")
-	private Set<Transportation> transportation;
 	
+	private LocalDate transportationEnd;
+	
+	private LocalDate transportationStart;
+	
+	
+    //@JoinColumn(name = "passenger_id")
+	@ManyToOne
+    private Customer customer;
+	
+	//@JoinColumn(name = "car_id")
+	@ManyToOne
+    private Car car;
 
-	@ManyToMany(mappedBy = "cars")
-	private Set<Customer> owners = new HashSet<>();
-
+	
 }
