@@ -1,12 +1,12 @@
 package com.wildcodeschool.spring.bookstore.entity.carpool;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
 
 import com.wildcodeschool.spring.bookstore.entity.Customer;
@@ -23,9 +23,9 @@ public class Transportation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private LocalDate transportationEnd;
+	private LocalDateTime transportationEnd;
 	
-	private LocalDate transportationStart;
+	private LocalDateTime transportationStart;
 	
 	
     //@JoinColumn(name = "passenger_id")

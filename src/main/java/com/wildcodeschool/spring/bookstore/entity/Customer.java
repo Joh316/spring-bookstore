@@ -56,9 +56,11 @@ public class Customer implements UserDetails {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
 	private List<Review> reviews;
 
+	
 	@OneToMany(mappedBy = "customer")
 	private Set<Transportation> transportation;
 
+	
 	@ManyToMany
 	@JoinTable(name = "owner_car", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
 	private Set<Car> cars;
